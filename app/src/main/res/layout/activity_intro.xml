@@ -4,4 +4,67 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".IntroActivity"/>
+    android:background="@drawable/degradado_fondo_celeste_gris_celeste"
+    tools:context=".IntroActivity">
+
+
+    <ImageView
+        android:contentDescription="@string/cd_iv_logo_ofic_intro"
+        android:id="@+id/iv_logo_ofic_intro"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.50"
+        app:srcCompat="@drawable/fondo_oficina_tindnet" />
+
+    <TextView
+        android:id="@+id/tv_title_intro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:lines="3"
+        android:paddingStart="@dimen/margen_texto_titulo_lat"
+        android:paddingEnd="@dimen/margen_texto_titulo_lat"
+        android:text="@string/text_intro_title"
+        android:textSize="@dimen/textsize_title"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.10" />
+
+    <TextView
+        android:id="@+id/tv_subtitle_intro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:lines="3"
+        android:paddingStart="@dimen/margen_texto_titulo_lat"
+        android:paddingEnd="@dimen/margen_texto_titulo_lat"
+        android:text="@string/text_intro_subtitle"
+        android:textSize="@dimen/textsize_subtitle"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.80" />
+
+    <Button
+        android:id="@+id/bt_continue_intro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@color/bt_azul_oscuro_habilitado"
+        android:text="@string/text_bt_continue"
+        android:textSize="@dimen/textsize_botones"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_subtitle_intro" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

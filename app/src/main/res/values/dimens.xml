@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <resources>
-    <dimen name="ancho_de_botones">100dp</dimen>
+    <!-- margenes -->
+    <dimen name="margen_texto_titulo_sup">40dp</dimen>
+    <dimen name="margen_texto_titulo_lat">50dp</dimen>
+    <!-- tamaño de fuentes -->
+    <dimen name="textsize_title">32sp</dimen>
+    <dimen name="textsize_subtitle">20sp</dimen>
+    <dimen name="textsize_botones">24sp</dimen>
 </resources>

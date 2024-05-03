@@ -5,4 +5,7 @@
     <color name="azul_oscuro">#083244</color>
     <color name="azul_medio">#169EB0</color>
     <color name="azul_claro_cielo">#8FCBE2</color>
+    <color name="gris_oficina_tindnet">#F3F2F0</color>
+    <color name="bt_azul_oscuro_habilitado">#083244</color>
+
 </resources>
