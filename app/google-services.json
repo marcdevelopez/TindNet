@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "457992766803",
+    "project_id": "tindnet-2024",
+    "storage_bucket": "tindnet-2024.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:457992766803:android:f338a0fc99ec5cb4560da6",
+        "android_client_info": {
+          "package_name": "com.marcdevelopez.tindnet"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAFWZMlrPdvGj9dTggCS00_rUYNDColx6A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
