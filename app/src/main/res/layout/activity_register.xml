@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RegisterActivity">
+
+    <TextView
+        android:id="@+id/tvTitleRegister"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margen_texto_titulo_sup"
+        android:text="@string/text_register_title"
+        android:textSize="@dimen/textsize_title"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.50"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/etNameRegister"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margen_et_left_rigth"
+        android:layout_marginTop="@dimen/margen_texto_titulo_inf"
+        android:layout_marginEnd="@dimen/margen_et_left_rigth"
+        android:ems="10"
+        android:hint="@string/text_hint_name"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitleRegister" />
+
+    <EditText
+        android:id="@+id/etEmailRegister"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margen_et_left_rigth"
+        android:layout_marginTop="@dimen/margen_between_textviews_vert"
+        android:layout_marginEnd="@dimen/margen_et_left_rigth"
+        android:ems="10"
+        android:hint="@string/text_hint_email"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etNameRegister" />
+
+    <EditText
+        android:id="@+id/etPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margen_et_left_rigth"
+        android:layout_marginTop="@dimen/margen_between_textviews_vert"
+        android:layout_marginEnd="@dimen/margen_et_left_rigth"
+        android:ems="10"
+        android:hint="@string/text_hint_password"
+        android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etEmailRegister"
+        app:passwordToggleEnabled="true" />
+
+    <EditText
+        android:id="@+id/etRepeatPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margen_et_left_rigth"
+        android:layout_marginTop="@dimen/margen_between_textviews_vert"
+        android:layout_marginEnd="@dimen/margen_et_left_rigth"
+        android:ems="10"
+        android:hint="@string/text_hint_repeat_password"
+        android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etPassword" />
+
+    <RadioGroup
+        android:id="@+id/radioGroupRegisterEmpClient"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margen_et_left_rigth"
+        android:layout_marginTop="@dimen/margen_between_textviews_vert"
+        android:layout_marginEnd="@dimen/margen_et_left_rigth"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etRepeatPassword">
+
+        <RadioButton
+            android:id="@+id/radioButtonEmpresa"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/text_regist_soy_empresa" />
+
+        <RadioButton
+            android:id="@+id/radioButtonCliente"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/text_regist_soy_cliente" />
+    </RadioGroup>
+
+    <CheckBox
+        android:id="@+id/checkBoxAceptPrivTerm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margen_et_left_rigth"
+        android:layout_marginTop="@dimen/margen_between_textviews_vert"
+        android:layout_marginEnd="@dimen/margen_et_left_rigth"
+        android:text="@string/text_acept_politic"
+        android:textSize="@dimen/textsize_small"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroupRegisterEmpClient" />
+
+    <Button
+        android:id="@+id/buttonRegister"
+        android:layout_width="@dimen/button_width"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margen_between_textviews_vert"
+        android:text="@string/text_bt_register"
+        android:backgroundTint="@color/bt_azul_oscuro_habilitado"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/checkBoxAceptPrivTerm" />
+
+    <TextView
+        android:id="@+id/textViewRegisterWith"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margen_between_textviews_vert"
+        android:text="@string/text_registr_with"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/buttonRegister" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margen_between_textviews_vert"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewRegisterWith">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imageButtonGoogle"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+           android:layout_marginEnd="@dimen/margen_between_textviews_vert"
+            android:src="@drawable/google_icon" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imageButtonFacebook"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+
+            android:src="@drawable/facebook_icon" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,11 +1,27 @@
 <resources>
     <string name="app_name">TindNet</string>
+    <!-- textviews de titulos -->
     <string name="text_intro_title">Encuentra a tu Empresa Perfecta con nosotros</string>
     <string name="text_intro_subtitle">Únete a nosotros y relaciónate con multitud de empresas y clientes</string>
+    <string name="text_register_title">Regístrate</string>
+    <!-- textviews -->
+    <string name="text_regist_soy_empresa">Soy Empresa</string>
+    <string name="text_regist_soy_cliente">Soy Cliente</string>
+    <string name="text_acept_politic">Acepto la Política de privacidad y Términos de uso</string>
+    <string name="text_registr_with">O regístrate con</string>
+    <!-- textviews hint -->
+    <string name="text_hint_name">Nombre</string>
+    <string name="text_hint_email">Email</string>
+    <string name="text_hint_password">Contraseña</string>
+    <string name="text_hint_repeat_password">Confirma tu contraseña</string>
     <!-- buttons -->
     <string name="text_bt_continue">Continuar</string>
     <string name="text_bt_login">Acceder</string>
     <string name="text_bt_register">Registrarse</string>
     <!-- content description -->
     <string name="cd_iv_logo_ofic_intro">Imágen del logo TindNet con la imagen de una oficina en color claro de fondo</string>
+    <string name="title_activity_home_client">HomeClientActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
 </resources>

@@ -13,6 +13,13 @@
         android:theme="@style/Theme.TindNet"
         tools:targetApi="31">
         <activity
+            android:name=".HomeClientActivity"
+            android:exported="false"
+            android:label="@string/title_activity_home_client" />
+        <activity
+            android:name=".RegisterActivity"
+            android:exported="false" />
+        <activity
             android:name=".LoginRegisterActivity"
             android:exported="false" />
         <activity

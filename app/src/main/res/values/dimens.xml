@@ -4,11 +4,18 @@
     <!-- margenes -->
     <dimen name="margen_texto_titulo_sup">40dp</dimen>
     <dimen name="margen_texto_titulo_lat">50dp</dimen>
+    <dimen name="margen_texto_titulo_inf">35dp</dimen>
+    <dimen name="margen_et_left_rigth">24dp</dimen>
+    <dimen name="margen_between_textviews_vert">16</dimen>
     <dimen name="dist_button_top">24dp</dimen>
     <!-- tamaño de fuentes -->
     <dimen name="textsize_title">32sp</dimen>
     <dimen name="textsize_subtitle">20sp</dimen>
+    <dimen name="textsize_small">14sp</dimen>
     <dimen name="textsize_botones">24sp</dimen>
     <!-- ancho de views -->
     <dimen name="button_width">220dp</dimen>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
 </resources>
