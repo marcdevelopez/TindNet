@@ -52,11 +52,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.80" />
+        app:layout_constraintVertical_bias="0.85" />
 
     <Button
         android:id="@+id/bt_continue_intro"
-        android:layout_width="wrap_content"
+        android:layout_width="@dimen/button_width"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:backgroundTint="@color/bt_azul_oscuro_habilitado"

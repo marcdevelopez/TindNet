@@ -4,8 +4,11 @@
     <!-- margenes -->
     <dimen name="margen_texto_titulo_sup">40dp</dimen>
     <dimen name="margen_texto_titulo_lat">50dp</dimen>
+    <dimen name="dist_button_top">24dp</dimen>
     <!-- tamaño de fuentes -->
     <dimen name="textsize_title">32sp</dimen>
     <dimen name="textsize_subtitle">20sp</dimen>
     <dimen name="textsize_botones">24sp</dimen>
+    <!-- ancho de views -->
+    <dimen name="button_width">220dp</dimen>
 </resources>

@@ -2,8 +2,10 @@
     <string name="app_name">TindNet</string>
     <string name="text_intro_title">Encuentra a tu Empresa Perfecta con nosotros</string>
     <string name="text_intro_subtitle">Únete a nosotros y relaciónate con multitud de empresas y clientes</string>
+    <!-- buttons -->
     <string name="text_bt_continue">Continuar</string>
-
+    <string name="text_bt_login">Acceder</string>
+    <string name="text_bt_register">Registrarse</string>
     <!-- content description -->
     <string name="cd_iv_logo_ofic_intro">Imágen del logo TindNet con la imagen de una oficina en color claro de fondo</string>
 </resources>
