@@ -6,4 +6,7 @@
     </style>
 
     <style name="Theme.TindNet" parent="Base.Theme.TindNet" />
+    <style name="ActionBarTheme" parent="Theme.AppCompat.Light.NoActionBar">
+
+    </style>
 </resources>
