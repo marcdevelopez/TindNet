@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RegisterActivity">
+    tools:context=".AuthActivity">
 
     <TextView
         android:id="@+id/tvTitleRegister"
@@ -22,7 +22,7 @@
     <EditText
         android:id="@+id/etNameRegister"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="45dp"
         android:layout_marginStart="@dimen/margen_et_left_rigth"
         android:layout_marginTop="@dimen/margen_texto_titulo_inf"
         android:layout_marginEnd="@dimen/margen_et_left_rigth"
@@ -31,12 +31,13 @@
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvTitleRegister" />
+        app:layout_constraintTop_toBottomOf="@+id/tvTitleRegister"
+        android:autofillHints="name" />
 
     <EditText
         android:id="@+id/etEmailRegister"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="45dp"
         android:layout_marginStart="@dimen/margen_et_left_rigth"
         android:layout_marginTop="@dimen/margen_between_textviews_vert"
         android:layout_marginEnd="@dimen/margen_et_left_rigth"
@@ -45,12 +46,13 @@
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etNameRegister" />
+        app:layout_constraintTop_toBottomOf="@+id/etNameRegister"
+        android:autofillHints="emailAddress" />
 
     <EditText
         android:id="@+id/etPassword"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="45dp"
         android:layout_marginStart="@dimen/margen_et_left_rigth"
         android:layout_marginTop="@dimen/margen_between_textviews_vert"
         android:layout_marginEnd="@dimen/margen_et_left_rigth"
@@ -60,12 +62,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etEmailRegister"
-        app:passwordToggleEnabled="true" />
+        app:passwordToggleEnabled="true"
+        android:autofillHints="password" />
 
     <EditText
         android:id="@+id/etRepeatPassword"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="45dp"
         android:layout_marginStart="@dimen/margen_et_left_rigth"
         android:layout_marginTop="@dimen/margen_between_textviews_vert"
         android:layout_marginEnd="@dimen/margen_et_left_rigth"
@@ -74,7 +77,8 @@
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/etPassword"
+        android:autofillHints="password" />
 
     <RadioGroup
         android:id="@+id/radioGroupRegisterEmpClient"

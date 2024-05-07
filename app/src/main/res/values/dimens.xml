@@ -6,7 +6,7 @@
     <dimen name="margen_texto_titulo_lat">50dp</dimen>
     <dimen name="margen_texto_titulo_inf">35dp</dimen>
     <dimen name="margen_et_left_rigth">24dp</dimen>
-    <dimen name="margen_between_textviews_vert">16</dimen>
+    <dimen name="margen_between_textviews_vert">16dp</dimen>
     <dimen name="dist_button_top">24dp</dimen>
     <!-- tamaño de fuentes -->
     <dimen name="textsize_title">32sp</dimen>

@@ -17,8 +17,14 @@
             android:exported="false"
             android:label="@string/title_activity_home_client" />
         <activity
-            android:name=".RegisterActivity"
-            android:exported="false" />
+            android:name=".AuthActivity"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".LoginRegisterActivity"
             android:exported="false" />
@@ -28,11 +34,6 @@
         <activity
             android:name=".MainActivity"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 

@@ -12,6 +12,7 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.marcdevelopez.tindnet.databinding.ActivityHomeClientBinding;
 
+
 public class HomeClientActivity extends AppCompatActivity {
 
     private ActivityHomeClientBinding binding;
