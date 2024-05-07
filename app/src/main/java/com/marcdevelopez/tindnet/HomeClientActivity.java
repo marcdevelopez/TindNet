@@ -22,7 +22,7 @@ public class HomeClientActivity extends AppCompatActivity {
         binding = ActivityHomeClientBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        Toolbar toolbar =findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar); // Configura la ActionBar
 
         // Configura la navegación con el NavController
