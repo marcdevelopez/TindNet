@@ -39,6 +39,7 @@ public class AuthActivity extends AppCompatActivity {
         mPasswordEditText = findViewById(R.id.etPassword);
         mRegisterButton = findViewById(R.id.buttonRegister);
         mRadioGroup = findViewById(R.id.radioGroupRegisterEmpClient);
+        // necesario para saber si está logeado usuario y para crear usuario nuevo.
         mAuth = FirebaseAuth.getInstance();
 
         // autenticamos los datos
@@ -99,7 +100,6 @@ public class AuthActivity extends AppCompatActivity {
         alertDialog.show();
     }
 
-
     private void showHomeClient(String email) {
         Intent homeIntent = new Intent(this, HomeClientActivity.class);
         homeIntent.putExtra(Constants.EMAIL_AUTH, (CharSequence) email);
@@ -117,9 +117,9 @@ public class AuthActivity extends AppCompatActivity {
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if (currentUser != null) {
+            // TODO: identificar usuario y enviar a empres o cliente
             currentUser.reload();
         }
     }
-
 
 }

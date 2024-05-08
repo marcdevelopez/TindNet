@@ -26,13 +26,13 @@
         android:layout_marginStart="@dimen/margen_et_left_rigth"
         android:layout_marginTop="@dimen/margen_texto_titulo_inf"
         android:layout_marginEnd="@dimen/margen_et_left_rigth"
+        android:autofillHints="name"
         android:ems="10"
         android:hint="@string/text_hint_name"
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvTitleRegister"
-        android:autofillHints="name" />
+        app:layout_constraintTop_toBottomOf="@+id/tvTitleRegister" />
 
     <EditText
         android:id="@+id/etEmailRegister"
@@ -41,13 +41,13 @@
         android:layout_marginStart="@dimen/margen_et_left_rigth"
         android:layout_marginTop="@dimen/margen_between_textviews_vert"
         android:layout_marginEnd="@dimen/margen_et_left_rigth"
+        android:autofillHints="emailAddress"
         android:ems="10"
         android:hint="@string/text_hint_email"
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etNameRegister"
-        android:autofillHints="emailAddress" />
+        app:layout_constraintTop_toBottomOf="@+id/etNameRegister" />
 
     <EditText
         android:id="@+id/etPassword"
@@ -56,14 +56,14 @@
         android:layout_marginStart="@dimen/margen_et_left_rigth"
         android:layout_marginTop="@dimen/margen_between_textviews_vert"
         android:layout_marginEnd="@dimen/margen_et_left_rigth"
+        android:autofillHints="password"
         android:ems="10"
         android:hint="@string/text_hint_password"
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etEmailRegister"
-        app:passwordToggleEnabled="true"
-        android:autofillHints="password" />
+        app:passwordToggleEnabled="true" />
 
     <EditText
         android:id="@+id/etRepeatPassword"
@@ -72,13 +72,13 @@
         android:layout_marginStart="@dimen/margen_et_left_rigth"
         android:layout_marginTop="@dimen/margen_between_textviews_vert"
         android:layout_marginEnd="@dimen/margen_et_left_rigth"
+        android:autofillHints="password"
         android:ems="10"
         android:hint="@string/text_hint_repeat_password"
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etPassword"
-        android:autofillHints="password" />
+        app:layout_constraintTop_toBottomOf="@+id/etPassword" />
 
     <RadioGroup
         android:id="@+id/radioGroupRegisterEmpClient"
@@ -122,8 +122,8 @@
         android:layout_width="@dimen/button_width"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margen_between_textviews_vert"
-        android:text="@string/text_bt_register"
         android:backgroundTint="@color/bt_azul_oscuro_habilitado"
+        android:text="@string/text_bt_register"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/checkBoxAceptPrivTerm" />
@@ -139,26 +139,38 @@
         app:layout_constraintTop_toBottomOf="@id/buttonRegister" />
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margen_et_left_rigth"
         android:layout_marginTop="@dimen/margen_between_textviews_vert"
+        android:layout_marginEnd="@dimen/margen_et_left_rigth"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewRegisterWith">
 
-        <androidx.appcompat.widget.AppCompatImageView
+        <Button
             android:id="@+id/imageButtonGoogle"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-           android:layout_marginEnd="@dimen/margen_between_textviews_vert"
-            android:src="@drawable/google_icon" />
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/margen_between_textviews_vert"
+            android:layout_weight="1"
+            android:backgroundTint="@color/gris_oficina_tindnet"
+            android:drawableLeft="@drawable/googleg_standard_color_18"
+            android:text="@string/text_bt_google"
+            android:textAlignment="textStart"
+            android:textColor="@color/black" />
 
-        <androidx.appcompat.widget.AppCompatImageView
+        <Button
             android:id="@+id/imageButtonFacebook"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-
-            android:src="@drawable/facebook_icon" />
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margen_between_textviews_vert"
+            android:layout_weight="1"
+            android:backgroundTint="@color/gris_oficina_tindnet"
+            android:drawableLeft="@drawable/facebook_icon"
+            android:text="@string/text_tb_facebook"
+            android:textAlignment="textStart"
+            android:textColor="@color/black" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
