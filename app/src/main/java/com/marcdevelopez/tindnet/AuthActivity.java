@@ -31,6 +31,7 @@ public class AuthActivity extends AppCompatActivity {
     private boolean soyCliente;
     private ProviderType provider;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -12,7 +12,20 @@
           "package_name": "com.marcdevelopez.tindnet"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "457992766803-7jeb6rk6v2qn47ppcgeic7vtg9srsl34.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.marcdevelopez.tindnet",
+            "certificate_hash": "44310057ff14c0b65c9a72a85896c15b8f0c6235"
+          }
+        },
+        {
+          "client_id": "457992766803-rq17g8pbc3tlfc3e40502bok2qpg88c6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyAFWZMlrPdvGj9dTggCS00_rUYNDColx6A"
@@ -20,7 +33,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "457992766803-gu8795rek1dkmeb5oi5uf5ks6j84cuh2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }
