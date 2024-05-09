@@ -3,10 +3,13 @@ package com.marcdevelopez.tindnet;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -26,7 +29,7 @@ public class AuthActivity extends AppCompatActivity {
 
     private static FirebaseAuth mAuth;
     private EditText mEmailRegisterEditText, mPasswordEditText;
-    private Button mRegisterButton;
+    private Button mRegisterWithPassword;
     private RadioGroup mRadioGroup;
     private boolean soyCliente;
     // necesario provider para saber como se autenticó el usuario en la home (google, correo y contraseña, facebook...):
@@ -39,13 +42,13 @@ public class AuthActivity extends AppCompatActivity {
         setContentView(R.layout.activity_auth);
         mEmailRegisterEditText = findViewById(R.id.etEmailRegister);
         mPasswordEditText = findViewById(R.id.etPassword);
-        mRegisterButton = findViewById(R.id.buttonRegister);
+        mRegisterWithPassword = findViewById(R.id.buttonRegister);
         mRadioGroup = findViewById(R.id.radioGroupRegisterEmpClient);
         // necesario para saber si está logeado usuario y para crear usuario nuevo.
         mAuth = FirebaseAuth.getInstance();
 
         // autenticamos los datos
-        mRegisterButton.setOnClickListener(new View.OnClickListener() {
+        mRegisterWithPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String email = mEmailRegisterEditText.getText().toString();
@@ -84,8 +87,31 @@ public class AuthActivity extends AppCompatActivity {
             }
         });
 
+        // esta función se encarga de ver si existe sesión iniciada
+        session();
+
     }
 
+    private void session() {
+        // comprobamos si tenemos iniciada sesión con el gestor de preferencias
+        SharedPreferences prefs = getSharedPreferences(getString(R.string.prefs_file), Context.MODE_PRIVATE);
+        String email = prefs.getString(getString(R.string.prefs_email), null);
+        String provider = prefs.getString(getString(R.string.prefs_provider), null);
+        // tenemos iniciada sesión si:
+        if (email != null && provider != null) {
+            // en este caso ocultamos la activity de autenticación si tenemos inicada sesión
+            ConstraintLayout layout = findViewById(R.id.authLayout);
+            layout.setVisibility(View.INVISIBLE); // en onstart() le damos visibilidad si hacemos logout...
+            // actualizamos el valor del provider para que se pase en el bundle al home...
+            this.provider = ProviderType.valueOf(provider);
+            // abrimos el home que corresponda
+            if (soyCliente) {
+                showHomeClient(email);
+            } else {
+                showHomeCompany(email);
+            }
+        }
+    }
 
     private void showAlert() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -111,11 +137,15 @@ public class AuthActivity extends AppCompatActivity {
     }
 
     private void showHomeCompany(String email) {
+        // TODO: como el de cliente...
     }
 
     @Override
     public void onStart() {
         super.onStart();
+        // volvemos a dar visibilidad al layout si no tenemos sesión abierta, que será cuando se muestre esta actividad
+        ConstraintLayout layout = findViewById(R.id.authLayout);
+        layout.setVisibility(View.VISIBLE);
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if (currentUser != null) {

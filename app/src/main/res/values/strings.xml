@@ -24,6 +24,8 @@
     <string name="cd_iv_logo_ofic_intro">Imágen del logo TindNet con la imagen de una oficina en color claro de fondo</string>
     <!-- sharedpreferences -->
     <string name="prefs_file">com.marcdevelopez.tindnet.PREFERENCE_FILE_KEY</string>
+    <string name="prefs_email">email</string>
+    <string name="prefs_provider">provider</string>
 
     <string name="title_activity_home_client">HomeClientActivity</string>
     <string name="title_home">Home</string>

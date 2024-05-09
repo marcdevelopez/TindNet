@@ -35,8 +35,8 @@ public class HomeClientActivity extends AppCompatActivity {
         // guardamos datos de email y provider en inicio de sesión para usar en caso de cierre de aplicación
         SharedPreferences sharedPreferences = getSharedPreferences(getString(R.string.prefs_file), Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString("email", email);
-        editor.putString("provider", provider.toString());
+        editor.putString(getString(R.string.prefs_email), email);
+        editor.putString(getString(R.string.prefs_provider), provider.toString());
         editor.apply();
 
         /**TODO: en menú superior del home, en cerrar sesión, llamaremos al sharedprerferences
