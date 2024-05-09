@@ -29,6 +29,7 @@ public class AuthActivity extends AppCompatActivity {
     private Button mRegisterButton;
     private RadioGroup mRadioGroup;
     private boolean soyCliente;
+    // necesario provider para saber como se autenticó el usuario en la home (google, correo y contraseña, facebook...):
     private ProviderType provider;
 
 
@@ -61,7 +62,7 @@ public class AuthActivity extends AppCompatActivity {
                                             provider = ProviderType.BASIC;
                                             showHomeClient(email);
                                         } else {
-                                            showHomeEmpresa(email);
+                                            showHomeCompany(email);
                                         }
                                     } else {
                                         // La autenticación falló
@@ -103,13 +104,13 @@ public class AuthActivity extends AppCompatActivity {
 
     private void showHomeClient(String email) {
         Intent homeIntent = new Intent(this, HomeClientActivity.class);
-        homeIntent.putExtra(Constants.EMAIL_AUTH, (CharSequence) email);
+        homeIntent.putExtra(Constants.EMAIL_AUTH, email);
         homeIntent.putExtra(Constants.PROVIDER, provider);
         startActivity(homeIntent);
 
     }
 
-    private void showHomeEmpresa(String email) {
+    private void showHomeCompany(String email) {
     }
 
     @Override
