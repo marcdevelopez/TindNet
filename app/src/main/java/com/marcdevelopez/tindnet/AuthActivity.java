@@ -25,10 +25,8 @@ import com.marcdevelopez.tindnet.provider.ProviderType;
 import com.marcdevelopez.tindnet.util.Constants;
 
 import android.widget.Toast;
-import androidx.annotation.NonNull;
-import com.google.android.gms.auth.api.Auth;
+
 import com.google.android.gms.auth.api.signin.*;
-import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.GoogleAuthProvider;
 
@@ -46,16 +44,20 @@ public class AuthActivity extends AppCompatActivity {
     private boolean soyCliente;
     // necesario provider para saber como se autenticó el usuario en la home (google, correo y contraseña, facebook...):
     private ProviderType provider;
+    private boolean esPrimeraVez;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_auth);
+
+        esPrimeraVez = true;
+
         mEmailRegisterEditText = findViewById(R.id.etEmailRegister);
         mPasswordEditText = findViewById(R.id.etPassword);
         buttonRegisterWithPassword = findViewById(R.id.buttonRegister);
-        buttonRegisterWithGoogle= findViewById(R.id.imageButtonGoogle);
+        buttonRegisterWithGoogle = findViewById(R.id.imageButtonGoogle);
         radioGroupClientCompany = findViewById(R.id.radioGroupRegisterEmpClient);
         // necesario para saber si está logeado usuario y para crear usuario nuevo.
         mAuth = FirebaseAuth.getInstance();
