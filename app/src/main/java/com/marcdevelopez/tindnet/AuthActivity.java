@@ -46,8 +46,24 @@ public class AuthActivity extends AppCompatActivity {
         mRadioGroup = findViewById(R.id.radioGroupRegisterEmpClient);
         // necesario para saber si está logeado usuario y para crear usuario nuevo.
         mAuth = FirebaseAuth.getInstance();
+        // hace el login en general escuchando los botones de login y la elección de tipo de usuario
+        setup();
+        // esta función se encarga de ver si existe sesión iniciada
+        session();
+    }
 
-        // autenticamos los datos
+    private void setup() {
+        // guardamos la selección de usuario Cliente o Empresa
+        mRadioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (checkedId == R.id.radioButtonCliente) {
+                    soyCliente = true;
+                } else soyCliente = false;
+            }
+        });
+
+        // autenticamos los datos para inicio de sesión con contraseña
         mRegisterWithPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -77,18 +93,6 @@ public class AuthActivity extends AppCompatActivity {
             }
         });
 
-        // guardamos la selección de usuario Cliente o Empresa
-        mRadioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if (checkedId == R.id.radioButtonCliente) {
-                    soyCliente = true;
-                } else soyCliente = false;
-            }
-        });
-
-        // esta función se encarga de ver si existe sesión iniciada
-        session();
 
     }
 
