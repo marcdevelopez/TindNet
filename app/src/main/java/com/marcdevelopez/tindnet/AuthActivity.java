@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.RadioGroup;
 
 import com.google.android.gms.common.api.ApiException;
@@ -57,6 +58,7 @@ public class AuthActivity extends AppCompatActivity {
         buttonRegisterWithPassword = findViewById(R.id.buttonRegister);
         buttonRegisterWithGoogle = findViewById(R.id.imageButtonGoogle);
         radioGroupClientCompany = findViewById(R.id.radioGroupRegisterEmpClient);
+
         // necesario para saber si está logeado usuario y para crear usuario nuevo.
         mAuth = FirebaseAuth.getInstance();
 
@@ -69,6 +71,7 @@ public class AuthActivity extends AppCompatActivity {
     }
 
     private void setup() {
+
         // guardamos la selección de usuario Cliente o Empresa
         radioGroupClientCompany.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -124,7 +127,6 @@ public class AuthActivity extends AppCompatActivity {
 
                 // Comprueba si el usuario ya ha iniciado sesión
                 if (mAuth.getCurrentUser() != null) {
-                    mAuth.signOut();
                     Toast.makeText(AuthActivity.this, "iniciada sesión con anterioridad", Toast.LENGTH_SHORT).show();
                     // El usuario ya ha iniciado sesión, puedes redirigir a la siguiente actividad
                     // o realizar cualquier acción que necesites aquí
@@ -185,9 +187,6 @@ public class AuthActivity extends AppCompatActivity {
         String provider = prefs.getString(getString(R.string.prefs_provider), null);
         // tenemos iniciada sesión si:
         if (email != null && provider != null) {
-            // en este caso ocultamos la activity de autenticación si tenemos inicada sesión
-            ConstraintLayout layout = findViewById(R.id.authLayout);
-            layout.setVisibility(View.INVISIBLE); // en onstart() le damos visibilidad si hacemos logout...
             // actualizamos el valor del provider para que se pase en el bundle al home...
             this.provider = ProviderType.valueOf(provider);
             // abrimos el home que corresponda
@@ -197,6 +196,7 @@ public class AuthActivity extends AppCompatActivity {
                 showHomeCompany(email);
             }
         }
+
     }
 
     private void showAlert() {
@@ -229,9 +229,6 @@ public class AuthActivity extends AppCompatActivity {
     @Override
     public void onStart() {
         super.onStart();
-        // volvemos a dar visibilidad al layout si no tenemos sesión abierta, que será cuando se muestre esta actividad
-        ConstraintLayout layout = findViewById(R.id.authLayout);
-        layout.setVisibility(View.VISIBLE);
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if (currentUser != null) {

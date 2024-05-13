@@ -3,6 +3,8 @@ package com.marcdevelopez.tindnet;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -11,6 +13,7 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.marcdevelopez.tindnet.databinding.ActivityHomeClientBinding;
 import com.marcdevelopez.tindnet.provider.ProviderType;
 import com.marcdevelopez.tindnet.util.Constants;
@@ -20,12 +23,23 @@ public class HomeClientActivity extends AppCompatActivity {
     private String email;
     private ProviderType provider;
     private ActivityHomeClientBinding binding;
+    private Button btnCerrarSesion;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // recupero email y provider de AuthActivity
         Bundle bundle = this.getIntent().getExtras();
+
+        btnCerrarSesion = findViewById(R.id.buttonCerrarSesion);
+        btnCerrarSesion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FirebaseAuth mAuth = FirebaseAuth.getInstance();
+                mAuth.signOut();
+            }
+        });
+
         // validamos que no está vacio el bundle
         if (bundle != null) {
             email = bundle.getString(Constants.EMAIL_AUTH);
@@ -42,7 +56,6 @@ public class HomeClientActivity extends AppCompatActivity {
         /**TODO: en menú superior del home, en cerrar sesión, llamaremos al sharedprerferences
          * R.string.prefs_file y llamaremos a clear() para eliminar estos datos
           */
-
 
         binding = ActivityHomeClientBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());

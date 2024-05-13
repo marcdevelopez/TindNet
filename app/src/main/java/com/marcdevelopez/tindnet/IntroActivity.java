@@ -23,7 +23,7 @@ public class IntroActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // iniciar actividad LoginRegister
-                startActivity(new Intent(IntroActivity.this,LoginRegisterActivity.class));
+                startActivity(new Intent(IntroActivity.this,AuthActivity.class));
                 // guardar en SharedPreferences que la actividad de introducción ya se ha mostrado
                 SharedPreferences prefs = getSharedPreferences(getString(R.string.prefs_file),MODE_PRIVATE);
                 SharedPreferences.Editor editor= prefs.edit();
