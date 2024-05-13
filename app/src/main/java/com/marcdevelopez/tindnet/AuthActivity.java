@@ -29,6 +29,7 @@ import android.widget.Toast;
 import com.google.android.gms.auth.api.signin.*;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.marcdevelopez.tindnet.util.IntroHelper;
 
 public class AuthActivity extends AppCompatActivity {
 
@@ -44,15 +45,12 @@ public class AuthActivity extends AppCompatActivity {
     private boolean soyCliente;
     // necesario provider para saber como se autenticó el usuario en la home (google, correo y contraseña, facebook...):
     private ProviderType provider;
-    private boolean esPrimeraVez;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_auth);
-
-        esPrimeraVez = true;
 
         mEmailRegisterEditText = findViewById(R.id.etEmailRegister);
         mPasswordEditText = findViewById(R.id.etPassword);
@@ -61,6 +59,9 @@ public class AuthActivity extends AppCompatActivity {
         radioGroupClientCompany = findViewById(R.id.radioGroupRegisterEmpClient);
         // necesario para saber si está logeado usuario y para crear usuario nuevo.
         mAuth = FirebaseAuth.getInstance();
+
+        // comprueba si ya se abrió la app por primera vez y si es así envía a LoginRegister
+        IntroHelper.checkIntroShown(this);
         // hace el login en general escuchando los botones de login y la elección de tipo de usuario
         setup();
         // esta función se encarga de ver si existe sesión iniciada
@@ -123,6 +124,8 @@ public class AuthActivity extends AppCompatActivity {
 
                 // Comprueba si el usuario ya ha iniciado sesión
                 if (mAuth.getCurrentUser() != null) {
+                    mAuth.signOut();
+                    Toast.makeText(AuthActivity.this, "iniciada sesión con anterioridad", Toast.LENGTH_SHORT).show();
                     // El usuario ya ha iniciado sesión, puedes redirigir a la siguiente actividad
                     // o realizar cualquier acción que necesites aquí
                 } else {

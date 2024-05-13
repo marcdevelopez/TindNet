@@ -26,6 +26,7 @@
     <string name="prefs_file">com.marcdevelopez.tindnet.PREFERENCE_FILE_KEY</string>
     <string name="prefs_email">email</string>
     <string name="prefs_provider">provider</string>
+    <string name="intro_shown">introShow</string>
     <!-- firebase -->
     <string name="default_web_client_id">457992766803-rjru6lpoopu34c91b263vb4430lmreuh.apps.googleusercontent.com</string>
 
