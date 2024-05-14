@@ -37,6 +37,13 @@ public class HomeClientActivity extends AppCompatActivity {
             public void onClick(View v) {
                 FirebaseAuth mAuth = FirebaseAuth.getInstance();
                 mAuth.signOut();
+                // elimino los datos guardados de inicio de sesion en sharedpreferences
+                SharedPreferences sharedPreferences = getSharedPreferences(getString(R.string.prefs_file), Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.remove(getString(R.string.prefs_email));
+                editor.remove(getString(R.string.prefs_provider));
+                editor.remove(getString(R.string.soy_cliente));
+                editor.apply();
             }
         });
 
@@ -51,11 +58,12 @@ public class HomeClientActivity extends AppCompatActivity {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString(getString(R.string.prefs_email), email);
         editor.putString(getString(R.string.prefs_provider), provider.toString());
+        editor.putBoolean(getString(R.string.soy_cliente), true);
         editor.apply();
 
         /**TODO: en menú superior del home, en cerrar sesión, llamaremos al sharedprerferences
          * R.string.prefs_file y llamaremos a clear() para eliminar estos datos
-          */
+         */
 
         binding = ActivityHomeClientBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());

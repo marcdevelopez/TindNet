@@ -13,14 +13,17 @@
         android:theme="@style/Theme.TindNet"
         tools:targetApi="31">
         <activity
+            android:name=".HomeCompanyActivity"
+            android:exported="false"
+            android:label="@string/title_activity_home_company" />
+        <activity
             android:name=".HomeClientActivity"
-            android:theme="@style/ActionBarTheme"
             android:exported="true"
-            android:label="@string/title_activity_home_client" >
-        </activity>
+            android:label="@string/title_activity_home_client"
+            android:theme="@style/ActionBarTheme"></activity>
         <activity
             android:name=".AuthActivity"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -32,11 +35,11 @@
             android:exported="true" />
         <activity
             android:name=".IntroActivity"
-            android:exported="true" />
-        <activity
-            android:name=".MainActivity"
             android:exported="true">
         </activity>
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"></activity>
     </application>
 
 </manifest>

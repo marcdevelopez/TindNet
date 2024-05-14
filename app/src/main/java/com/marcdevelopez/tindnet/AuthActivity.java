@@ -14,8 +14,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
-
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -46,6 +49,7 @@ public class AuthActivity extends AppCompatActivity {
     private boolean soyCliente;
     // necesario provider para saber como se autenticó el usuario en la home (google, correo y contraseña, facebook...):
     private ProviderType provider;
+    private String errorMessageAlert;
 
 
     @Override
@@ -62,8 +66,18 @@ public class AuthActivity extends AppCompatActivity {
         // necesario para saber si está logeado usuario y para crear usuario nuevo.
         mAuth = FirebaseAuth.getInstance();
 
+        // Si viene de LoginRegisterActivity no se checkea si en la app se mostró la intro ya...
+        Bundle bundle = getIntent().getExtras();
+        if (bundle != null) {
+            boolean introShownChecked = bundle.getBoolean(getString(R.string.intro_shown_checked));
+            if (!introShownChecked) {
+                IntroHelper.checkIntroShown(this); // de esta forma se queda en AuthActivity y no entra en bucle
+
+            }
+        }
+
         // comprueba si ya se abrió la app por primera vez y si es así envía a LoginRegister
-        IntroHelper.checkIntroShown(this);
+
         // hace el login en general escuchando los botones de login y la elección de tipo de usuario
         setup();
         // esta función se encarga de ver si existe sesión iniciada
@@ -72,6 +86,10 @@ public class AuthActivity extends AppCompatActivity {
 
     private void setup() {
 
+        // ponemos por defecto usuario en cliente para evitar dudas
+        RadioButton radioButtonCliente = findViewById(R.id.radioButtonCliente);
+        radioButtonCliente.setChecked(true);
+        soyCliente = true;
         // guardamos la selección de usuario Cliente o Empresa
         radioGroupClientCompany.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -104,10 +122,12 @@ public class AuthActivity extends AppCompatActivity {
                                         }
                                     } else {
                                         // La autenticación falló
-                                        showAlert();
+                                        showAlert(getString(R.string.fallo_autenticacion_password));
                                     }
                                 }
                             });
+                } else {
+                    showAlert(getString(R.string.fallo_campos_email_password_vacios));
                 }
             }
         });
@@ -199,10 +219,10 @@ public class AuthActivity extends AppCompatActivity {
 
     }
 
-    private void showAlert() {
+    private void showAlert(String message) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Error");
-        builder.setMessage("Se ha producido un error autenticando al usuario");
+        builder.setMessage(message);
         builder.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {

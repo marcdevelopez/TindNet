@@ -27,11 +27,18 @@
     <string name="prefs_email">email</string>
     <string name="prefs_provider">provider</string>
     <string name="intro_shown">introShow</string>
+    <string name="soy_cliente">soy_cliente</string>
+    <!-- bundles -->
+    <string name="intro_shown_checked">intro_shown_checked</string>
     <!-- firebase -->
     <string name="default_web_client_id">457992766803-rjru6lpoopu34c91b263vb4430lmreuh.apps.googleusercontent.com</string>
+    <!-- showalert -->
+    <string name="fallo_autenticacion_password">Falló la autenticación, vuelve a intentarlo.</string>
+    <string name="fallo_campos_email_password_vacios">Los campos Email y Contraseña son obligatorios.</string>
 
     <string name="title_activity_home_client">HomeClientActivity</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="title_activity_home_company">HomeCompanyActivity</string>
 </resources>
