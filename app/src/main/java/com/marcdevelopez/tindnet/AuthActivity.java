@@ -3,7 +3,6 @@ package com.marcdevelopez.tindnet;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -13,12 +12,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -30,7 +29,6 @@ import com.marcdevelopez.tindnet.util.Constants;
 
 import android.widget.Toast;
 
-import com.google.android.gms.auth.api.signin.*;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.marcdevelopez.tindnet.util.IntroHelper;
@@ -41,15 +39,14 @@ public class AuthActivity extends AppCompatActivity {
     private static final int RC_SIGN_IN = 9001;
     private GoogleSignInClient mGoogleSignInClient;
     private static FirebaseAuth mAuth;
-
     private EditText mEmailRegisterEditText, mPasswordEditText;
     private Button buttonRegisterWithPassword;
     private Button buttonRegisterWithGoogle;
     private RadioGroup radioGroupClientCompany;
+    private RadioButton radioButtonCliente;
     private boolean soyCliente;
     // necesario provider para saber como se autenticó el usuario en la home (google, correo y contraseña, facebook...):
     private ProviderType provider;
-    private String errorMessageAlert;
 
 
     @Override
@@ -66,18 +63,6 @@ public class AuthActivity extends AppCompatActivity {
         // necesario para saber si está logeado usuario y para crear usuario nuevo.
         mAuth = FirebaseAuth.getInstance();
 
-        // Si viene de LoginRegisterActivity no se checkea si en la app se mostró la intro ya...
-        Bundle bundle = getIntent().getExtras();
-        if (bundle != null) {
-            boolean introShownChecked = bundle.getBoolean(getString(R.string.intro_shown_checked));
-            if (!introShownChecked) {
-                IntroHelper.checkIntroShown(this); // de esta forma se queda en AuthActivity y no entra en bucle
-
-            }
-        }
-
-        // comprueba si ya se abrió la app por primera vez y si es así envía a LoginRegister
-
         // hace el login en general escuchando los botones de login y la elección de tipo de usuario
         setup();
         // esta función se encarga de ver si existe sesión iniciada
@@ -87,7 +72,7 @@ public class AuthActivity extends AppCompatActivity {
     private void setup() {
 
         // ponemos por defecto usuario en cliente para evitar dudas
-        RadioButton radioButtonCliente = findViewById(R.id.radioButtonCliente);
+        radioButtonCliente = findViewById(R.id.radioButtonCliente);
         radioButtonCliente.setChecked(true);
         soyCliente = true;
         // guardamos la selección de usuario Cliente o Empresa
@@ -205,10 +190,18 @@ public class AuthActivity extends AppCompatActivity {
         SharedPreferences prefs = getSharedPreferences(getString(R.string.prefs_file), Context.MODE_PRIVATE);
         String email = prefs.getString(getString(R.string.prefs_email), null);
         String provider = prefs.getString(getString(R.string.prefs_provider), null);
+
         // tenemos iniciada sesión si:
         if (email != null && provider != null) {
             // actualizamos el valor del provider para que se pase en el bundle al home...
             this.provider = ProviderType.valueOf(provider);
+            // Check if user is signed in (non-null) and update UI accordingly.
+            FirebaseUser currentUser = mAuth.getCurrentUser();
+            if (currentUser != null) {
+                // TODO: identificar usuario y enviar a empres o cliente
+                currentUser.reload();
+            }
+            Toast.makeText(this, email, Toast.LENGTH_SHORT).show();
             // abrimos el home que corresponda
             if (soyCliente) {
                 showHomeClient(email);
@@ -239,22 +232,19 @@ public class AuthActivity extends AppCompatActivity {
         homeIntent.putExtra(Constants.EMAIL_AUTH, email);
         homeIntent.putExtra(Constants.PROVIDER, provider);
         startActivity(homeIntent);
-
     }
 
     private void showHomeCompany(String email) {
-        // TODO: como el de cliente...
+        Intent homeIntent = new Intent(this, HomeCompanyActivity.class);
+        homeIntent.putExtra(Constants.EMAIL_AUTH, email);
+        homeIntent.putExtra(Constants.PROVIDER, provider);
+        startActivity(homeIntent);
     }
 
     @Override
-    public void onStart() {
+    public void onStart() { // se ejecuta despues del onCreate
         super.onStart();
-        // Check if user is signed in (non-null) and update UI accordingly.
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        if (currentUser != null) {
-            // TODO: identificar usuario y enviar a empres o cliente
-            currentUser.reload();
-        }
+
     }
 
 }
