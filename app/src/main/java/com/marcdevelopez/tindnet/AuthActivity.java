@@ -9,6 +9,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -48,7 +49,6 @@ public class AuthActivity extends AppCompatActivity {
     // necesario provider para saber como se autenticó el usuario en la home (google, correo y contraseña, facebook...):
     private ProviderType provider;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,6 +62,14 @@ public class AuthActivity extends AppCompatActivity {
 
         // necesario para saber si está logeado usuario y para crear usuario nuevo.
         mAuth = FirebaseAuth.getInstance();
+
+        // Configura el cliente de inicio de sesión con Google
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(getString(R.string.default_web_client_id))
+                .requestEmail()
+                .build();
+
+        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
         // hace el login en general escuchando los botones de login y la elección de tipo de usuario
         setup();
@@ -121,27 +129,9 @@ public class AuthActivity extends AppCompatActivity {
         buttonRegisterWithGoogle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Configura el cliente de inicio de sesión con Google
-                GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                        .requestIdToken(getString(R.string.default_web_client_id))
-                        .requestEmail()
-                        .build();
-
-                mGoogleSignInClient = GoogleSignIn.getClient(AuthActivity.this, gso);
-                mAuth = FirebaseAuth.getInstance();
-
-                // Comprueba si el usuario ya ha iniciado sesión
-                if (mAuth.getCurrentUser() != null) {
-                    Toast.makeText(AuthActivity.this, "iniciada sesión con anterioridad", Toast.LENGTH_SHORT).show();
-                    // El usuario ya ha iniciado sesión, puedes redirigir a la siguiente actividad
-                    // o realizar cualquier acción que necesites aquí
-                } else {
-                    // El usuario no ha iniciado sesión, muestra el botón de inicio de sesión con Google
-                    signInWithGoogle();
-                }
+                signInWithGoogle();
             }
         });
-
     }
 
     private void signInWithGoogle() {
@@ -162,6 +152,7 @@ public class AuthActivity extends AppCompatActivity {
                 firebaseAuthWithGoogle(account.getIdToken());
             } catch (ApiException e) {
                 // Google inicio de sesión fallido, muestra un mensaje al usuario
+                Log.w("AuthActivity", "Google sign in failed", e);
                 Toast.makeText(this, "Inicio de sesión con Google fallido", Toast.LENGTH_SHORT).show();
             }
         }
@@ -175,10 +166,12 @@ public class AuthActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             // Inicio de sesión con Google exitoso
-                            // Puedes obtener el usuario actual y redirigir a la siguiente actividad aquí
+                            Log.d("AuthActivity", "signInWithCredential:success");
                             FirebaseUser user = mAuth.getCurrentUser();
+                            // Puedes obtener el usuario actual y redirigir a la siguiente actividad aquí
                         } else {
                             // Inicio de sesión con Google fallido, muestra un mensaje al usuario
+                            Log.w("AuthActivity", "signInWithCredential:failure", task.getException());
                             Toast.makeText(AuthActivity.this, "Autenticación con Firebase fallida", Toast.LENGTH_SHORT).show();
                         }
                     }
@@ -228,23 +221,15 @@ public class AuthActivity extends AppCompatActivity {
     }
 
     private void showHomeClient(String email) {
-        Intent homeIntent = new Intent(this, HomeClientActivity.class);
-        homeIntent.putExtra(Constants.EMAIL_AUTH, email);
-        homeIntent.putExtra(Constants.PROVIDER, provider);
-        startActivity(homeIntent);
+
     }
 
     private void showHomeCompany(String email) {
-        Intent homeIntent = new Intent(this, HomeCompanyActivity.class);
-        homeIntent.putExtra(Constants.EMAIL_AUTH, email);
-        homeIntent.putExtra(Constants.PROVIDER, provider);
-        startActivity(homeIntent);
+
     }
 
     @Override
     public void onStart() { // se ejecuta despues del onCreate
         super.onStart();
-
     }
-
 }

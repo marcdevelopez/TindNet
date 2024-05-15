@@ -5,9 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 
-import com.marcdevelopez.tindnet.AuthActivity;
-import com.marcdevelopez.tindnet.HomeClientActivity;
-import com.marcdevelopez.tindnet.HomeCompanyActivity;
 import com.marcdevelopez.tindnet.IntroActivity;
 import com.marcdevelopez.tindnet.LoginRegisterActivity;
 import com.marcdevelopez.tindnet.R;
@@ -28,9 +25,9 @@ public class IntroHelper {
             if (!(email == null) && !(provider == null)) {
                 // es cliente y lo envía al home de cliente
                 if (soyCliente) {
-                    intent = new Intent(context, HomeClientActivity.class);
+                    //intent = new Intent(context, HomeClientActivity.class);
                 } else { // abre el home empresa
-                    intent = new Intent(context, HomeCompanyActivity.class);
+                    // intent = new Intent(context, HomeCompanyActivity.class);
                 }
             } else {
                 // no hay sesión iniciada envía a loginregistro
@@ -43,9 +40,10 @@ public class IntroHelper {
             intent = new Intent(context, IntroActivity.class);
         }
 
+        // descomentar cuando esten creadas las actividades
         // Iniciar la actividad correspondiente y finalizar la actividad actual
-        context.startActivity(intent);
-        ((Activity) context).finish();
+        // context.startActivity(intent);
+        // ((Activity) context).finish();
 
 
     }
