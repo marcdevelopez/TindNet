@@ -6,8 +6,10 @@ import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.NavigationUI;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import com.google.android.material.badge.BadgeDrawable;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.marcdevelopez.tindnet.databinding.ActivityHomeClientBinding;
 
 public class HomeClientActivity extends AppCompatActivity {
@@ -25,7 +27,22 @@ public class HomeClientActivity extends AppCompatActivity {
         initNavigation();
 
         // inicia la numeración de chats sin leer en
-        initBadge();
+        //initBadge();
+
+        try {
+            // Encuentra la vista del badge en el menú
+            BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
+            BadgeDrawable badge = bottomNavigationView.getOrCreateBadge(R.id.menu_favorite);
+
+            if (badge != null) {
+                badge.setVisible(true);
+                badge.setNumber(5); // Establece el número del badge
+            } else {
+                Log.e("HomeClientActivity", "Badge es null");
+            }
+        } catch (Exception e) {
+            Log.e("HomeClientActivity", "Error al inicializar el badge", e);
+        }
 
     }
 
@@ -38,9 +55,11 @@ public class HomeClientActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(binding.bottomNavigationView, navController);
     }
 
+    /*
     private void initBadge() {
         BadgeDrawable badge = binding.bottomNavigationView.getOrCreateBadge(R.id.menu_favorite);
         badge.setVisible(true);
         badge.setNumber(66);
     }
+    */
 }
