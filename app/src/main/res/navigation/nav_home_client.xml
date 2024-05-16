@@ -1,6 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/nav_home_client">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_home_client"
+    app:startDestination="@id/menu_home">
 
+    <fragment
+        android:id="@+id/menu_favorite"
+        android:name="com.marcdevelopez.tindnet.fragments.FavoriteClientFragment"
+        android:label="fragment_favorite_client"
+        tools:layout="@layout/fragment_favorite_client" />
+    <fragment
+        android:id="@+id/menu_home"
+        android:name="com.marcdevelopez.tindnet.fragments.HomeClientFragment"
+        android:label="fragment_home_client"
+        tools:layout="@layout/fragment_home_client" />
+    <fragment
+        android:id="@+id/menu_search"
+        android:name="com.marcdevelopez.tindnet.fragments.SearchClientFragment"
+        android:label="fragment_search_client"
+        tools:layout="@layout/fragment_search_client" />
 </navigation>
