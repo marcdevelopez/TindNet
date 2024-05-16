@@ -13,6 +13,15 @@
         android:theme="@style/Base.Theme.TindNet"
         tools:targetApi="31">
         <activity
+            android:name=".fragments.SearchClientFragment"
+            android:exported="false" />
+        <activity
+            android:name=".fragments.FavoriteClientFragment"
+            android:exported="false" />
+        <activity
+            android:name=".fragments.HomeClientFragment"
+            android:exported="false" />
+        <activity
             android:name=".HomeClientActivity"
             android:exported="false" />
         <activity

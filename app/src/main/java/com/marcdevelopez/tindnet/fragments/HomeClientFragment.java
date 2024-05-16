@@ -1,4 +1,4 @@
-package com.marcdevelopez.tindnet;
+package com.marcdevelopez.tindnet.fragments;
 
 import android.os.Bundle;
 
@@ -8,11 +8,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link HomeClientFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import com.marcdevelopez.tindnet.R;
+
+
 public class HomeClientFragment extends Fragment {
 
 
