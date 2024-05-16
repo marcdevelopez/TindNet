@@ -7,6 +7,7 @@ import androidx.navigation.ui.NavigationUI;
 
 import android.os.Bundle;
 
+import com.google.android.material.badge.BadgeDrawable;
 import com.marcdevelopez.tindnet.databinding.ActivityHomeClientBinding;
 
 public class HomeClientActivity extends AppCompatActivity {
@@ -23,6 +24,9 @@ public class HomeClientActivity extends AppCompatActivity {
 
         initNavigation();
 
+        // inicia la numeración de chats sin leer en
+        initBadge();
+
     }
 
     private void initNavigation() {
@@ -34,4 +38,9 @@ public class HomeClientActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(binding.bottomNavigationView, navController);
     }
 
+    private void initBadge() {
+        BadgeDrawable badge = binding.bottomNavigationView.getOrCreateBadge(R.id.menu_favorite);
+        badge.setVisible(true);
+        badge.setNumber(66);
+    }
 }
