@@ -6,4 +6,11 @@
     android:layout_height="match_parent"
     tools:context=".HomeClientActivity">
 
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/azul_claro_cielo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

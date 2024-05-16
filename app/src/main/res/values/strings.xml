@@ -35,6 +35,10 @@
     <!-- showalert -->
     <string name="fallo_autenticacion_password">Falló la autenticación, vuelve a intentarlo.</string>
     <string name="fallo_campos_email_password_vacios">Los campos Email y Contraseña son obligatorios.</string>
+    <!-- menus -->
+    <string name="menu_favorite">Favoritos</string>
+    <string name="menu_home">Home</string>
+    <string name="menu_search">Búsqueda</string>
 
     <string name="title_activity_home_client">HomeClientActivity</string>
     <string name="title_home">Home</string>
@@ -42,6 +46,6 @@
     <string name="title_notifications">Notifications</string>
     <string name="title_activity_home_company">HomeCompanyActivity</string>
     <string name="title_activity_home_prueba">HomePrueba</string>
-    <!-- TODO: Remove or change this placeholder text -->
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
